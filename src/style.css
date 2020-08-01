@@ -32,3 +32,54 @@ body {
 h1 {
   margin-left: 15px;
 }
+
+button {
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+}
+
+button:disabled {
+  color: lightgray;
+}
+
+#page-nav {
+  margin-top: 40px;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.film-display .film-title {
+  font-size: 30px;
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+.film-display .film-desc {
+  margin-bottom: 20px;
+}
+
+#film-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#film-search-container {
+  position: relative;
+}
+
+#film-search-container img {
+  position: absolute;
+  height: 30px;
+  left: 275px;
+  top: -3px;
+}
+
+#film-search-container input {
+  font-size: 25px;
+  padding-right: 40px;
+  border: none;
+  border-bottom: 1px solid black;
+}

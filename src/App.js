@@ -1,30 +1,69 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import searchIcon from "../img/loupe.png";
 // import sampleData from "./sample-data.json";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     // console.log(sampleData);
-    this.state = { data: [] };
+    this.state = { data: [], curPage: 1, maxPage: -1, filmSearchInput: "" };
   }
 
   componentDidMount() {
     console.log("mounted, fetching data");
-    fetch("http://localhost:3001/film?page=1")
+    this.getFilmPage(1);
+    this.getTotalPages();
+  }
+
+  onClickNextPage = () => {
+    console.log("next page");
+    const getPage = this.state.curPage + 1;
+    this.getFilmPage(getPage);
+  };
+
+  onClickPreviousPage = () => {
+    console.log("previous page");
+    const getPage = this.state.curPage - 1;
+    this.getFilmPage(getPage);
+  };
+
+  getTotalPages = () => {
+    fetch(`http://localhost:3001/film/pages`)
       .then(res => res.json())
       .then(json => {
         console.log("response: ", json);
-        this.setState({ data: json });
+        this.setState({ maxPage: json });
       });
-  }
+  };
+
+  getFilmPage = page => {
+    console.log("get page: ", page);
+    fetch(`http://localhost:3001/film?page=${page}`)
+      .then(res => res.json())
+      .then(json => {
+        console.log("response: ", json);
+        this.setState({ data: json, curPage: page });
+      });
+  };
+
+  onSearchChange = e => {
+    this.setState({ filmSearchInput: e.target.value });
+  };
 
   render() {
     const d = this.state.data;
     return (
       <div>
         <h1>Films</h1>
+
+        <div id="film-nav">
+          <FilmSearch
+            searchString={this.state.filmSearchInput}
+            onSearchChange={this.onSearchChange}
+          />
+        </div>
+
         <div className="main">
           {d.length
             ? d.map((d, i) => {
@@ -45,6 +84,21 @@ class App extends React.Component {
 
           <div></div>
         </div>
+
+        <div id="page-nav">
+          <button
+            disabled={this.state.curPage == 1}
+            onClick={this.onClickPreviousPage}
+          >
+            Previous Page
+          </button>
+          <button
+            disabled={this.state.curPage == this.state.maxPage}
+            onClick={this.onClickNextPage}
+          >
+            Next Page
+          </button>
+        </div>
       </div>
     );
   }
@@ -54,14 +108,10 @@ const FilmDisplay = props => {
   return (
     <div>
       <div className="film-display">
+        <span className="film-title">{props.title}</span>
+        <span className="film-desc">{props.description}</span>
         <span>
-          <u>Title</u>: {props.title}
-        </span>
-        <span>
-          <u>Description:</u> {props.description}
-        </span>
-        <span>
-          <u>Length:</u> {props.length}
+          <u>Length:</u> {props.length}m
         </span>
         <span>
           <u>Rating:</u> {props.rating}
@@ -80,8 +130,13 @@ const FilmDisplay = props => {
   );
 };
 
-const StatelessComponent = props => {
-  return <header>{props.title}</header>;
+const FilmSearch = props => {
+  return (
+    <div id="film-search-container">
+      <img alt="Search icon" src={searchIcon}></img>
+      <input value={props.searchString} onChange={props.onSearchChange}></input>
+    </div>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
