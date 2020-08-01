@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     // console.log(sampleData);
-    this.state = { data: [], curPage: 1, maxPage: -1, filmSearchInput: "" };
+    this.state = { data: [], curPage: 1, maxPage: 1, filmSearchInput: "" };
   }
 
   componentDidMount() {
@@ -54,17 +54,16 @@ class App extends React.Component {
   render() {
     const d = this.state.data;
     return (
-      <div>
-        <h1>Films</h1>
-
+      <div id="main">
         <div id="film-nav">
+          <h1>Films</h1>
           <FilmSearch
             searchString={this.state.filmSearchInput}
             onSearchChange={this.onSearchChange}
           />
         </div>
 
-        <div className="main">
+        <div id="film-display-container">
           {d.length
             ? d.map((d, i) => {
                 return (
