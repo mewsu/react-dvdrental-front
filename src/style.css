@@ -8,7 +8,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#main {
+#film-main {
   padding: 5px;
 }
 
@@ -42,10 +42,12 @@ button {
   border: none;
   background-color: white;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 button:disabled {
   color: lightgray;
+  cursor: default;
 }
 
 #page-nav {
@@ -76,11 +78,15 @@ button:disabled {
   position: relative;
 }
 
-#film-search-container img {
+#film-search-container button {
   position: absolute;
-  height: 30px;
   left: 275px;
   top: -3px;
+  cursor: pointer;
+}
+
+#film-search-container img {
+  height: 30px;
   cursor: pointer;
 }
 
@@ -89,4 +95,9 @@ button:disabled {
   padding-right: 40px;
   border: none;
   border-bottom: 1px solid black;
+}
+
+#top-nav {
+  display: flex;
+  justify-content: flex-end;
 }

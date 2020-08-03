@@ -1,0 +1,14 @@
+#login-main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#login-form {
+  margin-top: 100px;
+}
+
+#login-form div {
+  width: 100%;
+  margin: 5px;
+}
