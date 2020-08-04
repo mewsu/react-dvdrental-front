@@ -68,7 +68,8 @@ export default class FilmPage extends React.Component {
   };
 
   render() {
-    const d = this.state.data;
+    let d = this.state.data;
+    if (d.length > 8) d = d.slice(0, 8);
     return (
       <div id="film-main">
         <div id="film-nav">
@@ -105,12 +106,14 @@ export default class FilmPage extends React.Component {
 
         <div id="page-nav">
           <button
+            className="nav-button"
             disabled={this.state.curPage == 1}
             onClick={this.onClickPreviousPage}
           >
             Previous Page
           </button>
           <button
+            className="nav-button"
             disabled={this.state.curPage == this.state.maxPage}
             onClick={this.onClickNextPage}
           >

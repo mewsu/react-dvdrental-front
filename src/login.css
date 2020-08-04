@@ -8,7 +8,39 @@
   margin-top: 100px;
 }
 
-#login-form div {
-  width: 100%;
-  margin: 5px;
+#login-form input {
+  font-size: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin-bottom: 35px;
+}
+
+#login-form input::placeholder {
+  color: red;
+  opacity: 0.5;
+  font-size: 25px;
+  line-height: 80px;
+}
+
+#login-form h1 {
+  margin-bottom: 45px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#login-form-bottom {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px;
+}
+
+#login-form-bottom button {
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-transform: uppercase;
+  background-color: white;
+  border: none;
+  border-bottom: 2px solid black;
 }

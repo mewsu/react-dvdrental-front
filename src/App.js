@@ -30,10 +30,14 @@ const TopNav = props => {
   return (
     <div id="top-nav">
       <Link to="login">
-        <button disabled={props.isLoggedIn}>Login</button>
+        <button className="nav-button" disabled={props.isLoggedIn}>
+          Login
+        </button>
       </Link>
       <Link to="logout">
-        <button disabled={!props.isLoggedIn}>Logout</button>
+        <button className="nav-button" disabled={!props.isLoggedIn}>
+          Logout
+        </button>
       </Link>
     </div>
   );

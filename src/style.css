@@ -38,10 +38,16 @@ h1 {
   text-align: center;
 }
 
-button {
+.nav-button {
   border: none;
   background-color: white;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+#film-search-container button {
+  border: none;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -100,4 +106,8 @@ button:disabled {
 #top-nav {
   display: flex;
   justify-content: flex-end;
+}
+
+#film-nav h1 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
