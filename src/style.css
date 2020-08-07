@@ -106,6 +106,20 @@ button:disabled {
 #top-nav {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  background-color: black;
+}
+
+#top-nav button {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+#top-nav button:disabled {
+  color: gray;
 }
 
 #film-nav h1 {
